@@ -41,11 +41,11 @@ cmake --build build --config Release
 ## 사용법
 
 Grayscale
-
 ImageProcessor.exe --input input.bmp --output result.bmp --filter grayscale
 
 
 Threshold
+
 ImageProcessor.exe --input input.bmp --output result.bmp --filter threshold --threshold 128
 
 

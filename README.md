@@ -48,12 +48,8 @@ ImageProcessor.exe --input input.bmp --output result.bmp --filter grayscale
 ### Threshold
 ```bash
 ImageProcessor.exe --input input.bmp --output result.bmp --filter threshold --threshold 128
-
-
-
-Threshold 값은 0\~255 범위만 허용합니다.
 ```
-
+Threshold 값은 0\~255 범위만 허용합니다.
 
 ### Blur
 ```bash
@@ -75,10 +71,7 @@ ImageProcessor.exe --input input.bmp --output result.bmp --filter flip-v
 ```bash
 ImageProcessor.exe --input input.bmp --output result.bmp --pipeline "grayscale,blur,threshold:128"
 ```
-
 위 Pipeline은 다음 순서로 실행됩니다. Grayscale -> Blur -> Threshold(128)
-
-
 
 
 

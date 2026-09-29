@@ -53,20 +53,20 @@ Threshold 값은 0\~255 범위만 허용합니다.
 
 
 
-Blur
+### Blur
 ImageProcessor.exe --input input.bmp --output result.bmp --filter blur
 
 
-Sharpen
+### Sharpen
 ImageProcessor.exe --input input.bmp --output result.bmp --filter sharpen
 
 
-좌우 / 상하 반전
+### 좌우 / 상하 반전
 ImageProcessor.exe --input input.bmp --output result.bmp --filter flip-h
 ImageProcessor.exe --input input.bmp --output result.bmp --filter flip-v
 
 
-Pipeline
+### Pipeline
 ImageProcessor.exe --input input.bmp --output result.bmp --pipeline "grayscale,blur,threshold:128"
 
 
@@ -103,17 +103,19 @@ Gray = 0.299R + 0.587G + 0.114B
 
 Blur와 Sharpen은 동일한 Convolution 연산을 사용하고 Kernel만 다르게 구성했습니다.
 
-Blur kernel:
+### Blur kernel:
+```bash
 1 1 1
 1 1 1   / 9
 1 1 1
+```
 
-
-Sharpen kernel:
+### Sharpen kernel:
+```bash
  0 -1  0
 -1  5 -1
  0 -1  0
-
+```
 
 Convolution은 주변 픽셀을 참조하므로 처리 중 변경된 값이 다음 계산에 영향을 주지 않도록 원본 'ImageBuffer'를 복사하여 읽기 전용 source로 사용합니다. 
 

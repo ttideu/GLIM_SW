@@ -31,44 +31,50 @@
 Visual Studio 2022에서 CMake 프로젝트로 빌드할 수 있습니다.
 
 
-
+```bash
 cmake -S . -B build
 cmake --build build --config Release
-
+```
 
 
 
 ## 사용법
 
 ### Grayscale
+```bash
 ImageProcessor.exe --input input.bmp --output result.bmp --filter grayscale
-
+```
 
 ### Threshold
+```bash
 ImageProcessor.exe --input input.bmp --output result.bmp --filter threshold --threshold 128
 
 
 
 Threshold 값은 0\~255 범위만 허용합니다.
-
+```
 
 
 ### Blur
+```bash
 ImageProcessor.exe --input input.bmp --output result.bmp --filter blur
-
+```
 
 ### Sharpen
+```bash
 ImageProcessor.exe --input input.bmp --output result.bmp --filter sharpen
-
+```
 
 ### 좌우 / 상하 반전
+```bash
 ImageProcessor.exe --input input.bmp --output result.bmp --filter flip-h
 ImageProcessor.exe --input input.bmp --output result.bmp --filter flip-v
-
+```
 
 ### Pipeline
+```bash
 ImageProcessor.exe --input input.bmp --output result.bmp --pipeline "grayscale,blur,threshold:128"
-
+```
 
 위 Pipeline은 다음 순서로 실행됩니다. Grayscale -> Blur -> Threshold(128)
 
@@ -135,14 +141,14 @@ Convolution은 주변 픽셀을 참조하므로 처리 중 변경된 값이 다�
 
 모든 필터는 다음 공통 인터페이스를 구현합니다.
 
-
+```bash
 class FilterBase
 {
 public:
     virtual \~FilterBase() = default;
     virtual void apply(ImageBuffer\& image) const = 0;
 };
-
+```
 
 Pipeline은 std::unique\_ptr<FilterBase>를 순서대로 보관한 뒤 동일한 apply() 인터페이스로 실행합니다. 
 
